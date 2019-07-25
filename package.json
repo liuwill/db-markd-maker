@@ -1,0 +1,57 @@
+{
+  "name": "db-markd-maker",
+  "version": "1.0.0",
+  "description": "generate markdown structure from database",
+  "main": "index.js",
+  "author": "liuwill <liuwill@live.com>",
+  "license": "MIT",
+  "repository": "git+https://github.com/liuwill/db-markd-maker.git",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "mysql": "^2.17.1",
+    "yargs": "^13.3.0"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.6.8",
+    "chai": "^4.2.0",
+    "husky": "^3.0.1",
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
+    "precise-commits": "^1.0.2",
+    "prettier": "^1.18.2",
+    "source-map-support": "^0.5.12",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3"
+  },
+  "scripts": {
+    "authors": "git log --format='%aN <%aE>' | sort -u > AUTHORS",
+    "lint": "tslint -p .",
+    "fix": "tslint -p . --fix",
+    "prettier": "prettier --write --config ./.prettierrc './**/*.{ts,tsx}'",
+    "test": "mocha --require ts-node/register test/**/*.ts",
+    "coverage": "nyc mocha --opts test/mocha.opts"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "reporter": [
+      "html",
+      "lcov",
+      "text-summary"
+    ],
+    "all": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "precise-commits --check-only"
+    }
+  }
+}
