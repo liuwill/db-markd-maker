@@ -57,6 +57,7 @@
     "no-empty": false,
     "no-empty-interface": true,
     "no-eval": true,
+    "no-implicit-dependencies": [true, "dev"],
     "no-inferrable-types": [
       true,
       "ignore-params"
@@ -141,7 +142,6 @@
     }]
   },
   "extends": [
-    "tslint:latest",
-    "tslint-config-prettier"
+    "tslint:latest"
   ]
 }

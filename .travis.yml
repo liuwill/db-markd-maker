@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "8.12.0"
+# services:
+#   - mysql
+install:
+  - yarn install
+script:
+  - yarn run lint
+  - yarn run test
+after_script:
+  - yarn global add codecov
+  - yarn run coverage
+# before_install:
+#   - mysql -e 'CREATE DATABASE ketchup;'

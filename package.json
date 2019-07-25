@@ -15,9 +15,8 @@
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.6.8",
-    "chai": "^4.2.0",
+    "ava": "^2.2.0",
     "husky": "^3.0.1",
-    "mocha": "^6.2.0",
     "nyc": "^14.1.1",
     "precise-commits": "^1.0.2",
     "prettier": "^1.18.2",
@@ -31,15 +30,33 @@
     "lint": "tslint -p .",
     "fix": "tslint -p . --fix",
     "prettier": "prettier --write --config ./.prettierrc './**/*.{ts,tsx}'",
-    "test": "mocha --require ts-node/register test/**/*.ts",
-    "coverage": "nyc mocha --opts test/mocha.opts"
+    "test": "nyc ava --timeout=3000",
+    "mocha": "nyc mocha --opts test/mocha.opts",
+    "coverage": "codecov"
+  },
+  "ava": {
+    "sources": [
+			"src/**/*"
+		],
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
   },
   "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
     "extension": [
       ".ts",
       ".tsx"
     ],
     "exclude": [
+      "node_modules/**/*",
+      "**/*.spec.js",
       "**/*.d.ts"
     ],
     "reporter": [
