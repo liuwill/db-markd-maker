@@ -1,7 +1,6 @@
 import test from 'ava'
-import * as utils from '../../src/utils'
 import * as makerConfig from '../../src/config'
-
+import * as utils from '../../src/utils'
 import * as mockDb from '../mock/table'
 
 const tableConfig = makerConfig.schemaConfig
