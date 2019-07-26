@@ -1,7 +1,7 @@
 export function transformMarkedTable(tableData, columnConfig) {
   return tableData.reduce((result, current) => {
     const lineItems = columnConfig.map((item) => {
-      if (item.func) {
+      if (item.func && typeof item.func === 'function') {
         return item.func(current[item.column])
       }
       return current[item.column]

@@ -1,29 +1,16 @@
 import test from 'ava'
 import * as utils from '../../src/utils'
+import * as makerConfig from '../../src/config'
 
-const schemaConfig = [{
-  column: 'table_name',
-  name: '表名',
-  func: (tableName) => {
-    return `[${tableName}](#${tableName})`
-  },
-}, {
-  column: 'table_comment',
-  name: '描述',
-}, {
-  column: 'engine',
-  name: '存储引擎',
-}]
+import * as mockDb from '../mock/table'
 
-const mockSchema = [{
-  table_name: 'tb_mock',
-  table_comment: 'mock',
-  engine: 'InnoDB',
-}]
+const tableConfig = makerConfig.schemaConfig
+
+const mockDataList = mockDb.schemaData
 
 test('utils.ts', (t) => {
-  const markdLines = utils.transformMarkedTable(mockSchema, schemaConfig)
-  t.is(markdLines.length, mockSchema.length + 2)
-  console.log(markdLines)
+  const tableLines = utils.transformMarkedTable(mockDataList, tableConfig)
+  t.is(tableLines.length, mockDataList.length + 2)
+  console.log(tableLines.join('\n'))
   t.pass()
 })

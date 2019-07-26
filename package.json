@@ -35,9 +35,12 @@
     "coverage": "codecov"
   },
   "ava": {
+    "files": [
+      "test/unit/*"
+    ],
     "sources": [
-			"src/**/*"
-		],
+      "src/**/*"
+    ],
     "compileEnhancements": false,
     "extensions": [
       "ts"
